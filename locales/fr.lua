@@ -22,7 +22,8 @@ local Translations = {
         open_door = 'Ouvrir la porte',
         leave = 'Quitter l\'appartement',
         close_menu = '⬅ Fermer le menu',
-        tennants = 'Locataire',
+        tennants = 'Locataire(s)',
+        header = 'Appartement',
     },
 }
 
