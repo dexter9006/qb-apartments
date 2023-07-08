@@ -25,6 +25,12 @@ local function ShowEntranceHeaderMenu()
     local headerMenu = {}
 
     if IsOwned then
+    -- Vitto
+    headerMenu[#headerMenu+1] = {
+        header = Lang:t('text.header'),
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    }
+    --
         headerMenu[#headerMenu+1] = {
             header = Lang:t('text.enter'),
             params = {
@@ -63,7 +69,12 @@ end
 
 local function ShowExitHeaderMenu()
     local headerMenu = {}
-
+    -- Vitto
+    headerMenu[#headerMenu+1] = {
+        header = Lang:t('text.header'),
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    }
+    --
     headerMenu[#headerMenu+1] = {
         header = Lang:t('text.open_door'),
         params = {
