@@ -283,11 +283,17 @@ local function EnterApartment(house, apartmentId, new)
                 ClosestHouse = house
                 RangDoorbell = nil
                 Wait(500)
-                TriggerEvent('qb-weathersync:client:DisableSync')
+                --TriggerEvent('qb-weathersync:client:DisableSync')
+                -- Vitto
+                TriggerEvent('qb-weathersync:client:EnableSync')
+                --
                 Wait(100)
                 TriggerServerEvent('qb-apartments:server:SetInsideMeta', house, apartmentId, true, false)
                 TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_close", 0.1)
                 TriggerServerEvent("apartments:server:setCurrentApartment", CurrentApartment)
+                -- Vitto
+                TriggerEvent("backitems:showagain")
+                --
 
             end, house)
         else
@@ -331,7 +337,7 @@ local function LeaveApartment(house)
     DoScreenFadeOut(500)
     while not IsScreenFadedOut() do Wait(10) end
     exports['qb-interior']:DespawnInterior(HouseObj, function()
-        TriggerEvent('qb-weathersync:client:EnableSync')
+        --TriggerEvent('qb-weathersync:client:EnableSync')  -- Vitto plus besoin du coup
         SetEntityCoords(PlayerPedId(), Apartments.Locations[house].coords.enter.x, Apartments.Locations[house].coords.enter.y,Apartments.Locations[house].coords.enter.z)
         SetEntityHeading(PlayerPedId(), Apartments.Locations[house].coords.enter.w)
         Wait(1000)
@@ -343,7 +349,9 @@ local function LeaveApartment(house)
         DoScreenFadeIn(1000)
         TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_close", 0.1)
         TriggerServerEvent("apartments:server:setCurrentApartment", nil)
-
+        -- Vitto
+        TriggerEvent("backitems:showagain")
+        --
         DeleteInApartmentTargets()
         DeleteApartmentsEntranceTargets()
     end)
@@ -533,6 +541,9 @@ RegisterNetEvent('apartments:client:EnterApartment', function()
         if result ~= nil then
             EnterApartment(ClosestHouse, result.name)
         end
+        -- Vitto
+        TriggerEvent("backitems:showagain")
+        --
     end)
 end)
 
