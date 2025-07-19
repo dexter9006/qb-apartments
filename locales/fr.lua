@@ -18,11 +18,12 @@ local Translations = {
         logout = 'Déconnexion Personnage',
         change_outfit = 'Changez de tenue',
         open_stash = 'Ouvrir le coffre',
-        move_here = 'Déplacez-vous ici',
+        move_here = 'Aménagez ici',
         open_door = 'Ouvrir la porte',
         leave = 'Quitter l\'appartement',
         close_menu = '⬅ Fermer le menu',
-        tennants = 'Locataire',
+        tennants = 'Locataire(s)',
+        header = 'Appartement',
     },
 }
 
