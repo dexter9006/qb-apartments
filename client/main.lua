@@ -26,6 +26,12 @@ local function OpenEntranceMenu()
     local headerMenu = {}
 
     if IsOwned then
+    -- Vitto
+    headerMenu[#headerMenu+1] = {
+        header = Lang:t('text.header'),
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    }
+    --
         headerMenu[#headerMenu + 1] = {
             header = Lang:t('text.enter'),
             params = {
@@ -64,7 +70,13 @@ end
 
 local function OpenExitMenu()
     local headerMenu = {}
-
+    -- Vitto
+    headerMenu[#headerMenu+1] = {
+        header = Lang:t('text.header'),
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    }
+    --
+    
     headerMenu[#headerMenu + 1] = {
         header = Lang:t('text.open_door'),
         params = {
@@ -405,6 +417,9 @@ local function EnterApartment(house, apartmentId, new)
                 RangDoorbell = nil
                 Wait(500)
                 TriggerEvent('qb-weathersync:client:DisableSync')
+                -- vitto
+                TriggerEvent("backitems:showagain")
+                --
                 Wait(100)
                 TriggerServerEvent('qb-apartments:server:SetInsideMeta', house, apartmentId, true, false)
                 TriggerServerEvent('InteractSound_SV:PlayOnSource', 'houses_door_close', 0.1)
@@ -654,6 +669,9 @@ RegisterNetEvent('apartments:client:EnterApartment', function()
         if result ~= nil then
             EnterApartment(ClosestHouse, result.name)
         end
+    -- Vitto
+    TriggerEvent("backitems:showagain")
+    --
     end)
 end)
 
